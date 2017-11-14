@@ -1,0 +1,48 @@
+'use strict';var _react = require('react');var _react2 = _interopRequireDefault(_react);
+var _enzyme = require('enzyme');
+var _FuelSavingsTextInput = require('./FuelSavingsTextInput');var _FuelSavingsTextInput2 = _interopRequireDefault(_FuelSavingsTextInput);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+describe('<FuelSavingsTextInput />', function () {
+  it('should be an input element', function () {
+    var props = {
+      name: 'testName',
+      onChange: jest.fn(),
+      placeholder: 'Type Here',
+      value: 100 };
+
+
+    var wrapper = (0, _enzyme.shallow)(_react2.default.createElement(_FuelSavingsTextInput2.default, props));
+    var inputType = wrapper.type();
+    expect(inputType).toEqual('input');
+  });
+
+  it('should handle change', function () {
+    var props = {
+      name: 'newMpg',
+      onChange: jest.fn(),
+      placeholder: null,
+      value: 100 };
+
+
+    var wrapper = (0, _enzyme.shallow)(_react2.default.createElement(_FuelSavingsTextInput2.default, props));
+    var changeEvent = { target: { value: 101 } };
+
+    expect(props.onChange).not.toBeCalled();
+    wrapper.simulate('change', changeEvent);
+    expect(props.onChange).toBeCalledWith(changeEvent);
+  });
+
+  // Example of testing the value of a prop
+  it('should apply placeholder', function () {
+    var props = {
+      name: 'newMpg',
+      onChange: jest.fn(),
+      placeholder: 'Type Here',
+      value: 100 };
+
+
+    var wrapper = (0, _enzyme.shallow)(_react2.default.createElement(_FuelSavingsTextInput2.default, props));
+    var placeholder = wrapper.find('input').prop('placeholder');
+    expect(placeholder).toEqual('Type Here');
+  });
+});

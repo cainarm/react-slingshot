@@ -1,0 +1,56 @@
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.
+
+
+
+
+
+
+
+
+
+calculateMilesDrivenPerMonth = calculateMilesDrivenPerMonth;exports.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+calculateSavingsPerMonth = calculateSavingsPerMonth;exports.
+
+
+
+
+
+
+
+
+
+
+
+
+necessaryDataIsProvidedToCalculateSavings = necessaryDataIsProvidedToCalculateSavings;exports.
+
+
+
+
+
+
+
+calculateSavings = calculateSavings;var _math = require('./math');var _numberFormat = require('./numberFormat'); // Private
+function calculateMonthlyCost(milesDrivenPerMonth, ppg, mpg) {var gallonsUsedPerMonth = milesDrivenPerMonth / mpg;return gallonsUsedPerMonth * ppg;} // Public
+function calculateMilesDrivenPerMonth(milesDriven, milesDrivenTimeframe) {var monthsPerYear = 12;var weeksPerYear = 52;switch (milesDrivenTimeframe) {case 'week':return milesDriven * weeksPerYear / monthsPerYear;case 'month':return milesDriven;case 'year':return milesDriven / monthsPerYear;default:throw new Error('Unknown milesDrivenTimeframe passed: ' + milesDrivenTimeframe);}}function calculateSavingsPerMonth(settings) {if (!settings.milesDriven) {return 0;}var milesDrivenPerMonth = calculateMilesDrivenPerMonth(settings.milesDriven, settings.milesDrivenTimeframe);var tradeFuelCostPerMonth = calculateMonthlyCost(milesDrivenPerMonth, settings.tradePpg, settings.tradeMpg);var newFuelCostPerMonth = calculateMonthlyCost(milesDrivenPerMonth, settings.newPpg, settings.newMpg);var savingsPerMonth = tradeFuelCostPerMonth - newFuelCostPerMonth;return (0, _math.roundNumber)(savingsPerMonth, 2);}function necessaryDataIsProvidedToCalculateSavings(settings) {return settings.newMpg > 0 && settings.tradeMpg > 0 && settings.newPpg > 0 && settings.tradePpg > 0 && settings.milesDriven > 0;}function calculateSavings(settings) {var monthlySavings = calculateSavingsPerMonth(settings);
+  return {
+    monthly: (0, _numberFormat.getCurrencyFormattedNumber)(monthlySavings),
+    annual: (0, _numberFormat.getCurrencyFormattedNumber)(monthlySavings * 12),
+    threeYear: (0, _numberFormat.getCurrencyFormattedNumber)(monthlySavings * 12 * 3) };
+
+}

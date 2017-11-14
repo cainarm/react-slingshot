@@ -1,0 +1,22 @@
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.savings = exports.fuelSavings = undefined;
+var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var
+
+shape = _propTypes2.default.shape,number = _propTypes2.default.number,bool = _propTypes2.default.bool,string = _propTypes2.default.string; // Centralized propType definitions
+
+var fuelSavings = exports.fuelSavings = shape({
+  newMpg: _propTypes2.default.oneOf[(number, string)],
+  tradeMpg: _propTypes2.default.oneOf[(number, string)],
+  newPpg: _propTypes2.default.oneOf[(number, string)],
+  tradePpg: _propTypes2.default.oneOf[(number, string)],
+  milesDriven: _propTypes2.default.oneOf[(number, string)],
+  milesDrivenTimeframe: string,
+  displayResult: bool,
+  dateModified: string,
+  necessaryDataIsProvidedToCalculateSavings: bool,
+  savings: savings });
+
+
+var savings = exports.savings = shape({
+  monthly: _propTypes2.default.oneOf[(number, string)],
+  annual: _propTypes2.default.oneOf[(number, string)],
+  threeYear: _propTypes2.default.oneOf[(number, string)] });

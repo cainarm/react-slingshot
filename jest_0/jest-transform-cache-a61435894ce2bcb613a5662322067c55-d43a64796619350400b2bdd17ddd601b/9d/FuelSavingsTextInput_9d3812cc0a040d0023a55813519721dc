@@ -1,0 +1,28 @@
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });var _react = require('react');var _react2 = _interopRequireDefault(_react);
+var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+var FuelSavingsTextInput = function FuelSavingsTextInput(_ref) {var name = _ref.name,value = _ref.value,placeholder = _ref.placeholder,onChange = _ref.onChange;
+  return (
+    _react2.default.createElement('input', {
+      className: 'small',
+      name: name,
+      type: 'text',
+      placeholder: placeholder,
+      value: value,
+      onChange: onChange }));
+
+};var
+
+string = _propTypes2.default.string,func = _propTypes2.default.func,number = _propTypes2.default.number,oneOfType = _propTypes2.default.oneOfType;
+
+FuelSavingsTextInput.propTypes = {
+  name: string.isRequired,
+  onChange: func.isRequired,
+  placeholder: string,
+  value: oneOfType([
+  string,
+  number]) };exports.default =
+
+
+
+FuelSavingsTextInput;
